@@ -1,12 +1,12 @@
-### How to build:
+### How to build (Android 17, kernel 6.18, incl. Radxa ROCK 5A):
 
 1. Establish [Android build environment](https://source.android.com/setup/initializing) and install [repo](https://source.android.com/docs/setup/develop#installing-repo).
 
 2. Initialize repo:
 
 ```
-repo init -u https://android.googlesource.com/kernel/manifest -b common-android16-6.12-lts
-curl -o .repo/local_manifests/manifest_rk_opi.xml -L https://raw.githubusercontent.com/dvab-sarma/android_kernel_manifest/android-16.0/manifest_rk_opi.xml --create-dirs
+repo init -u https://android.googlesource.com/kernel/manifest -b common-android17-6.18
+curl -o .repo/local_manifests/manifest_rk_opi.xml -L https://raw.githubusercontent.com/lukaszsobala/android_kernel_manifest/android-17.0-rock5a/manifest_rk_opi.xml --create-dirs
 ```
 3. Sync source code:
 
@@ -28,6 +28,11 @@ tools/bazel build --config=fast --config=stamp //common:opi5_pro
 Orange Pi 3B:
 ```
 tools/bazel build --config=fast --config=stamp //common:opi3b
+```
+
+Radxa ROCK 5A (same target as Orange Pi 5 Pro; it also outputs `rk3588s-rock-5a.dtb`):
+```
+tools/bazel build --config=fast --config=stamp //common:opi5_pro
 ```
 
 Compiled kernel Image, dtb can be found in -
